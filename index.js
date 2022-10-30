@@ -7,8 +7,8 @@ const path = require('path')
 const res = require('express/lib/response')
 const prompt = require("prompt");
 
-app.get('/users', (req, res) => { //request = req, and res = response
-  res.send('Hello Umer! Im WORKING fine') //send request.
+app.get('/', (req, res) => { //request = req, and res = response
+  res.sendFile(path.join(__dirname, "html/index.html")) //send request.
 })
 
 app.get('/add', (req, res) => {
