@@ -6,182 +6,100 @@ const port = 3000 //what port to use
 const path = require('path')
 const res = require('express/lib/response')
 const prompt = require("prompt");
+app.use(express.static("html"));
 
 app.get('/', (req, res) => { //request = req, and res = response
   res.sendFile(path.join(__dirname, "html/index.html")) //send request.
 })
 
-app.get('/add', (req, res) => {
-
-function add() {
-
-  prompt.start();
-  
-  prompt.get(["num1", "num2"], 
-  function (err, res) {
-    if (err) {
-      console.log(err);
-    } else {
-
-      var sum = parseFloat(res.num1) 
-        + parseFloat(res.num2);
-      console.log("Sum of " + res.num1 
-        + " and " + res.num2 + " is " + sum);
-    }
-  });
+app.get('/sum',function(req,res){
+    var a=Number(req.query.first);
+    var b=Number(req.query.sec);
+    var c;
+    c=a+b;
+    response = {
+        result: c  
+    };
+    console.log(response);
+    res.end(JSON.stringify(response));
 }
-  
-// Calling add function
-add();
-})
+);
 
-app.get('/subtract', (req, res) => {
+app.get('/sub',function(req,res){
+    var a=Number(req.query.first);
+    var b=Number(req.query.sec);
+    var c;
+    c=a-b;
+    response = {
+        result: c  
+    };
+    console.log(response);
+    res.end(JSON.stringify(response));
+}
+);
 
-  function sub() {
-  
-    prompt.start();
-    
-    prompt.get(["num1", "num2"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-  
-        var subtract = parseFloat(res.num1) 
-          - parseFloat(res.num2);
-        console.log("Subtraction of " + res.num1 
-          + " and " + res.num2 + " is " + subtract);
-      }
-    });
-  }
-    
-  // Calling add function
-  sub();
-  })
+app.get('/mul',function(req,res){
+    var a=Number(req.query.first);
+    var b=Number(req.query.sec);
+    var c;
+    c=a*b;
+    response = {
+        result: c  
+    };
+    console.log(response);
+    res.end(JSON.stringify(response));
+}
+);
 
-app.get('/multiply', (req,res) => {
-  function multiply() {
-  
-    prompt.start();
-    
-    prompt.get(["num1", "num2"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-  
-        var multi = parseFloat(res.num1) 
-          * parseFloat(res.num2);
-        console.log("multiplication of " + res.num1 
-          + " and " + res.num2 + " is " + multi);
-      }
-    });
-  }
-    
-  // Calling add function
-  multiply();
+app.get('/div',function(req,res){
+    var a=Number(req.query.first);
+    var b=Number(req.query.sec);
+    var c;
+    c=a/b;
+    response = {
+        result: c  
+    };
+    console.log(response);
+    res.end(JSON.stringify(response));
+}
+);
 
-})
+app.get('/area',function(req,res){
+    var a=Number(req.query.first);
+    var b=Number(req.query.sec);
+    var c;
+    c=0.5*a*b;
+    response = {
+        result: c  
+    };
+    console.log(response);
+    res.end("the area of rectangle is" + JSON.stringify(response));
+}
+);
 
-app.get('/divide', (req,res) => {
-  function divide() {
-  
-    prompt.start();
-    
-    prompt.get(["num1", "num2"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-  
-        var div = parseFloat(res.num1) 
-          / parseFloat(res.num2);
-        console.log("division of " + res.num1 
-          + " and " + res.num2 + " is " + div);
-      }
-    });
-  }
-    
-  // Calling add function
-  divide();
-
-})
-
-app.get('/triangle', (req,res) => {
-  function tri() {
-  
-    prompt.start();
-    
-    prompt.get(["base", "height"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-  
-        var area = 0.5* parseFloat(res.base) 
-          * parseFloat(res.height);
-        console.log("base of " + res.base 
-          + " and height of" + res.height + " and area is " + area);
-      }
-    });
-  }
-    
-  // Calling add function
-  tri();
-
-})
-app.get('/rectangle', (req,res) => {
-  function rectang() {
-  
-    prompt.start();
-    
-    prompt.get(["length", "width"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-  
-        var rect = parseFloat(res.length) 
-          * parseFloat(res.width);
-        console.log("length of " + res.length
-          + " and width of" + res.width + " and area is " + rect);
-      }
-    });
-  }
-    
-  // Calling add function
-  rectang();
-
-})
-
-app.get('/evenorodd', (req,res) => {
-  function evenorodd() {
-  
-    prompt.start();
-    
-    prompt.get(["num"], 
-    function (err, res) {
-      if (err) {
-        console.log(err);
-      } else {
-
-      if(res.num % 2 == 0) {
+app.get('/evenorodd',function(req,res){
+    var a=Number(req.query.first);
+    if(a % 2 == 0) {
+        let c = "the number is even"
+        response = {
+            result: c
+        }
         console.log("The number is even.");
+        res.end(JSON.stringify(response));
         }
 
 // if the number is odd
       else {
-        console.log("The number is odd.");
-        } 
-
+        let d = "the number is odd"
+        response = {
+            result: d
         }
-    });
-  }
-    
-  // Calling add function
-  evenorodd();
+        console.log("The number is odd.");
+        res.end(JSON.stringify(response));
+        } 
+        });
 
-})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`) //check which port the app is using
