@@ -14,6 +14,7 @@ app.get('/users', (req, res) => { //request = req, and res = response
   res.send('Hello Umer! Im WORKING fine') //send request.
 })
 
+
 app.get('/add', (req, res) => {
 
   function add() {
@@ -185,6 +186,16 @@ app.get('/add', (req, res) => {
     evenorodd();
   
   })
+
+// Addition Operation API
+app.get('/add', (req, res) => {
+  const number1 = parseInt(prompt('Enter first number?'));
+  const number2 =parseInt(prompt('Enter second number?'));
+  sum=number1+number2;
+  console.log(sum)
+res.send("Answer="+sum+"")
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`) //check which port the app is using
