@@ -1,0 +1,4 @@
+#NODE IGNORE
+
+node_modules
+package-lock.js
