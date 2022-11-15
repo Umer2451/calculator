@@ -10,6 +10,7 @@ const prompt = require("prompt");
 app.get('/users', (req, res) => { //request = req, and res = response
   res.send('Hello Umer! Im WORKING fine') //send request.
 })
+//code umair
 
 app.get('/evenorodd', (req,res) => {
   function evenorodd() {
